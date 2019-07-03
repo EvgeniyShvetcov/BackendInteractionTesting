@@ -11,7 +11,7 @@ function App() {
 		<React.Fragment>
 			<NavMenu />
 			<Switch>
-				<Route path="/graphQL/:currency" component={GraphQL} />
+				<Route path="/GraphQL/:studentId?" component={GraphQL} />
 				<Route path="/RestApi" component={RestApi} />
 				<Route path="/OData" component={OData} />
 			</Switch>
