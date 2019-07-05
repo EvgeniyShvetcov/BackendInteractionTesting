@@ -25,7 +25,9 @@ namespace GraphQLApi.Queries
                     var query = studentRepository.GetQuery();
                     if (studentId.HasValue)
                         query = query.Where(student => student.Id == studentId);
-                    return query.ToListAsync();
+
+                    return query.Include(s => s.Enrollments)
+                        .ToListAsync();
                 });
         }
     }

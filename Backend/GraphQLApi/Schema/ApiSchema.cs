@@ -1,4 +1,5 @@
 using GraphQL;
+using GraphQLApi.Mutations;
 using GraphQLApi.Queries;
 
 namespace GraphQLApi.Schema
@@ -9,6 +10,7 @@ namespace GraphQLApi.Schema
             : base(resolver)
         {
             Query = resolver.Resolve<StudentQuery>();
+            Mutation = resolver.Resolve<StudentMutation>();
         }
     }
 }

@@ -6,6 +6,7 @@ using GraphQL;
 using GraphQL.Server;
 using GraphQL.Server.Ui.Playground;
 using GraphQL.Types;
+using GraphQLApi.Mutations;
 using GraphQLApi.Queries;
 using GraphQLApi.Schema;
 using GraphQLApi.Types;
@@ -43,7 +44,12 @@ namespace GraphQLApi
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddDbContext<ContosoUniversityContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:ContosoUniversityDb"]));
             services.AddTransient<IStudentRepository, StudentRepository>();
+            //GraphQL
             services.AddSingleton<IDocumentExecuter, DocumentExecuter>();
+            services.AddTransient<StudentQuery>();
+            services.AddTransient<StudentMutation>();
+            services.AddTransient<StudentType>();
+            services.AddTransient<EnrollmentType>();
 
             services.AddScoped<IDependencyResolver>(x =>
                 new FuncDependencyResolver(x.GetRequiredService));
